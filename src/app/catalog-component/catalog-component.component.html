@@ -1,0 +1,31 @@
+<div>
+  <ul class="product-service products list-unstyled">
+    <li *ngFor="let product of products" class="product-service-item product-service-item border-bottom mb-4">
+      <div class="product row">
+        <div class="col-md-2 product-service">
+          <img [src]="product.imageUrl" alt="{{product.name}}" class="img-fluid" />
+        </div>
+        <div class="col-md-6 product-info">
+          <div class="name text-primary custom-product-name"><h5>{{ product.name }}</h5></div>
+          <div *ngIf="!showDetails" class="description text-muted custom-product-description">
+            {{ product.description | slice:0:100 }} <!-- Afficher les 100 premiers caractères de la description -->
+            <button class="btn btn-link text-muted  btn-light" (click)="toggleDetails()"><b>Show more</b></button>
+          </div>
+          
+          <div *ngIf="showDetails">
+          
+          
+            <button class="btn btn-link text-muted  btn-light" (click)="toggleDetails()"><b>Hide details</b></button>
+          </div>
+          
+          <app-product-details-component *ngIf="showDetails" [product]="product"></app-product-details-component>
+        </div>
+        <div class="col-md-3">
+          <div> {{ product.price }}$ </div>
+          <button class="btn btn-primary cta" (click)="(product)">Buy</button>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+</div>

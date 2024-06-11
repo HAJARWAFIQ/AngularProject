@@ -1,0 +1,84 @@
+.fixed-top{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+.sign-out {
+    position: absolute;
+    top: 60px;
+    right: 30px;
+  }
+  /* Style de base pour le dropdown */
+.nav-item.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff; /* Couleur de fond du dropdown */
+    padding: 5px 0;
+    border: 1px solid #ccc; /* Bordure du dropdown */
+  }
+  
+  /* Style pour afficher le dropdown au survol */
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Style pour les liens dans le dropdown */
+  .dropdown-item {
+    display: block;
+    padding: 10px;
+    color: #333; /* Couleur du texte */
+    text-decoration: none;
+  }
+  
+  /* Style pour les liens au survol */
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Couleur de fond au survol */
+  }
+  .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+  }
+  
+  .dropdown-menu {
+    display: none;
+  }
+  
+  .fixed-top{
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    height: 10%;
+  }
+
+
+
+  .btn-sign-in {
+    background-color: #007bff; /* Bleu primaire */
+    border-color: #007bff; /* Couleur de la bordure */
+    color: white; /* Couleur du texte */
+  }
+  
+
+  .btn-logout {
+    background-color: #007bff; /* Bleu primaire */
+    border-color: #007bff; /* Couleur de la bordure */
+    color: white; /* Couleur du texte */
+  }
+  .btn-sign-in:hover {
+    background-color: #0056b3; /* Bleu plus foncé au survol */
+  }
+  
+  .btn-register {
+    background-color: #0056b3; /* Bleu plus foncé */
+    border-color: #0056b3; /* Couleur de la bordure */
+    color: white; /* Couleur du texte */
+  }
+  
+  .btn-register:hover {
+    background-color: #003366; /* Bleu marine au survol */
+  }

@@ -1,0 +1,61 @@
+.order-confirmation {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-confirmation h1 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.order-confirmation p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.order-confirmation strong {
+    color: #333;
+}
+
+.order-confirmation h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.order-confirmation ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-confirmation ul li {
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    color: #495057;
+}
+
+.order-confirmation .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.order-confirmation .btn {
+    flex: 1;
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+}

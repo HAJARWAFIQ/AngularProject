@@ -1,0 +1,35 @@
+<div class="container col-4">
+  <br><br> 
+  <h2 style="color: #007bff;">Ajouter un nouveau produit</h2>
+   <form (ngSubmit)="onSubmit()" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+     <div class="mb-3">
+       <label for="productName" class="form-label">Nom du produit:</label>
+       <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="newProduct.name" required>
+     </div>
+     <div class="mb-3">
+       <label for="productDescription" class="form-label">Description:</label>
+       <textarea class="form-control" id="productDescription" name="productDescription" [(ngModel)]="newProduct.description" required></textarea>
+     </div>
+     <div class="mb-3">
+       <label for="productQuantity" class="form-label">Quantité:</label>
+       <input type="number" class="form-control" id="productQuantity" name="productQuantity" [(ngModel)]="newProduct.quantity" required>
+     </div>
+     <div class="mb-3">
+       <label for="productPrice" class="form-label">Prix:</label>
+       <input type="number" class="form-control" id="productPrice" name="productPrice" [(ngModel)]="newProduct.price" required>
+     </div>
+
+     <div class="mb-3">
+      <label for="productCategory" class="form-label">Catégorie:</label>
+      <input class="form-control" id="productCategory" name="productCategory" [(ngModel)]="newProduct.category" name="productCategory" required>
+    </div>
+     
+
+     <div class="mb-3">
+       <label for="productImage" class="form-label">URL de l'image:</label>
+       <input type="text" class="form-control" id="productImage" name="productImage" [(ngModel)]="newProduct.imageUrl">
+     </div>
+    
+     <button type="submit" class="btn btn-primary" style="background-color: #28a745; border-color: #28a745;">Ajouter</button>
+   </form>
+</div>

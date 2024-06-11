@@ -1,21 +1,74 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, Query } from '@angular/core';
 import { Product } from './models/Product';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { catchError, map, Observable, of,tap } from 'rxjs';
+import { collection, Firestore, query, QueryDocumentSnapshot } from 'firebase/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { HttpClient } from '@angular/common/http';
+import { collectionData } from '@angular/fire/firestore';
+import firebase from 'firebase/compat/app';
+import { Promotion } from './models/promotion';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product[] = [
-    new Product(1, 'EFRRR', 5, 1400, 'L’écran de l’iPhone 14 a des angles arrondis qui suivent la ligne élégante de l’appareil et s’inscrivent dans un rectangle standard. Si l’on mesure ce rectangle, l’écran affiche une diagonale de 6,06 pouces (la zone d’affichage réelle est moindre).Écran HDR True Tone Large gamme de couleurs (P3) Haptic Touch Contraste 2 000 000:1 (standard) Luminosité maximale de 800 nits (standard)  luminosité de pointe de 1 200 nits (HDR) Revêtement oléophobe résistant aux traces de doigts Affichage simultané de plusieurs langues et jeux de caractère','assets/iphone14.jpeg'),
-    new Product(2, 'AER22', 6, 500, 'Tablette SAM 12 pouces Grand écran de 12 pouces avec une résolution WQXGA (2560 x 1600) pour des images nettes et précises.Technologie d affichage Super AMOLED pour des couleurs vives et des contrastes profonds. Dalle Gorilla Glass 5 pour une résistance accrue aux rayures et aux chocs.','assets/Tablette.jpg'),
-    new Product(3, 'RTVV', 7, 1400, 'L’écran de l’iPhone 14 a des angles arrondis qui suivent la ligne élégante de l’appareil et s’inscrivent dans un rectangle standard. Si l’on mesure ce rectangle, l’écran affiche une diagonale de 6,06 pouces (la zone d’affichage réelle est moindre).Écran HDR True Tone Large gamme de couleurs (P3) Haptic Touch Contraste 2 000 000:1 (standard) Luminosité maximale de 800 nits (standard)  luminosité de pointe de 1 200 nits (HDR) Revêtement oléophobe résistant aux traces de doigts Affichage simultané de plusieurs langues et jeux de caractère','assets/iphone14.jpeg'),
-    new Product(4,'SQZEE',5,1500, ' 48-inch screen size, ideal for small spaces or as a second screen.4K Ultra HD (3840 x 2160) resolution for sharp and clear images LED display technology for low power consumption HDR (High Dynamic Range) for better color and contrast reproduction','assets/SmartTv.jpg')
-  ];
+  private productsCollection: AngularFirestoreCollection<Product>;
+  private categoriesCollectionName = 'categories';
 
-  constructor() {}
-  
-getProducts(): Product[] {
-    return this.products;
+  constructor(private firestore: AngularFirestore) {
+    this.productsCollection = this.firestore.collection<Product>('products');
+  }
+
+// CREATE: Ajouter un nouveau produit
+addProduct(product: Product): Promise<void> {
+  // Générer un ID unique pour le nouveau produit
+  const id = this.firestore.createId();
+  // Ajouter le produit à la collection avec l'ID généré
+  return this.productsCollection.doc(id).set({ ...product, id });
+}
+
+
+// UPDATE: Mettre à jour un produit existant
+updateProduct(productId: string, newData: Partial<Product>): Promise<void> {
+  // Mettre à jour les données du produit dans la collection avec l'ID spécifié
+  return this.productsCollection.doc(productId).update(newData);
+}
+
+// DELETE: Supprimer un produit
+deleteProduct(productId: string): Promise<void> {
+  // Supprimer le produit de la collection avec l'ID spécifié
+  return this.productsCollection.doc(productId).delete();
+}
+
+
+getProducts(): Observable<Product[]> {
+  return this.productsCollection.valueChanges({ idField: 'id' }).pipe(
+    map(products => products.filter(product => product.quantity > 0))
+  );
+}
+
+  getProductById(productId: string): Observable<Product | null> {
+    return this.productsCollection.doc(productId).valueChanges().pipe(
+      map((product: Product | undefined) => product ?? null), // Transform undefined to null
+      catchError((error: any) => {
+        console.error('Error fetching product:', error);
+        return of(null); // Return an observable of null in case of error
+      })
+    );
+  }
+
+  debugProducts(): void {
+    this.getProducts().subscribe(
+      products => {
+        console.log('Produits récupérés avec succès :', products);
+      },
+      error => {
+        console.error('Erreur lors de la récupération des produits :', error);
+      }
+    );
   }
 
   buy(product: Product): void {
@@ -27,7 +80,39 @@ getProducts(): Product[] {
     } else {
       alert("Produit épuisé !");
     }
-    
-}
+  }
+
+
+  addCategory(category: string): Promise<void> {
+    const id = this.firestore.createId();
+    return this.firestore.collection(this.categoriesCollectionName).doc(id).set({ name: category });
+  }
+
+  updateProductQuantity(productId: string, quantity: number): Promise<void> {
+    return this.firestore.collection('products').doc(productId).update({
+      quantity: firebase.firestore.FieldValue.increment(-quantity)
+    });
+  }
+
+  
+  getProductsByCategory(category: string): Observable<Product[]> {
+    return this.firestore.collection<Product>('products', ref => ref.where('category', '==', category)).valueChanges({ idField: 'id' });
+  }
+
+
+
+  addPromotion(productId: string, promotion: Promotion): Promise<void> {
+    return this.firestore.collection('products').doc(productId).update({
+      promotion: promotion
+    });
+  }
+
+  // Supprimer la promotion d'un produit
+  removePromotion(productId: string): Promise<void> {
+    return this.firestore.collection('products').doc(productId).update({
+      promotion: null
+    });
+  }
+
 
 }

@@ -1,0 +1,89 @@
+/* Style global */
+.admin-order-list {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
+  
+  /* Titre */
+  .admin-order-list h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Éléments de commande */
+  .order-item {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Numéro de commande */
+  .order-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  /* Informations de commande */
+  .order-item p {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #777;
+  }
+  
+  /* Titre des produits */
+  .order-item h4 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  /* Liste des produits */
+  .order-item ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .order-item ul li {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #777;
+  }
+  
+  /* Boutons */
+  .order-item button {
+    display: block;
+    margin: 0 auto 10px; /* Ajout d'une marge en bas */
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Ajout d'une classe pour le second bouton */
+  .order-item .second-button {
+    margin-bottom: 0; /* Suppression de la marge en bas */
+  }
+  
+  .order-item button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .order-item button:not(:disabled):hover {
+    background-color: #0056b3;
+  }
+  

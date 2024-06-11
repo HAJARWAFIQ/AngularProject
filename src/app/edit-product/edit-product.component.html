@@ -1,0 +1,33 @@
+<div class="container col-4">
+  <br><br>
+  <h2 style="color: #007bff;">Modifier le produit</h2>
+  <form (ngSubmit)="onsubmit()" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+      <div class="mb-3">
+          <label for="name" class="form-label">Nom du produit:</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="product.name" name="name" required>
+      </div>
+      <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea class="form-control" id="description" [(ngModel)]="product.description" name="description" required></textarea>
+      </div>
+      <div class="mb-3">
+          <label for="quantity" class="form-label">Quantité:</label>
+          <input type="number" class="form-control" id="quantity" [(ngModel)]="product.quantity" name="quantity" required>
+      </div>
+      <div class="mb-3">
+          <label for="price" class="form-label">Prix:</label>
+          <input type="number" class="form-control" id="price" [(ngModel)]="product.price" name="price" required>
+      </div>
+      <div class="mb-3">
+          <label for="imageUrl" class="form-label">URL de l'image:</label>
+          <input type="text" class="form-control" id="imageUrl" [(ngModel)]="product.imageUrl" name="imageUrl" required>
+      </div>
+      <div class="mb-3">
+        
+            <label for="productCategory" class="form-label">Catégorie:</label>
+            <input class="form-control" id="productCategory" name="productCategory" [(ngModel)]="product.category" name="productCategory" required>
+          
+    </div>
+      <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff;">Enregistrer</button>
+  </form>
+</div>

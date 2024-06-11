@@ -1,0 +1,19 @@
+
+<div class="page-container">
+  <div class="background-container">
+    <div class="content-container">
+<div *ngIf="order" class="order-status-container">
+  <h1>Statut de la commande</h1>
+  <p><strong>Numéro de commande :</strong> {{ order.id }}</p>
+  <p><strong>Statut :</strong> {{ order.status }}</p>
+  <p><strong>Montant total :</strong> {{ order.totalAmount | currency }}</p>
+  <p><strong>Date de commande :</strong> {{ order.createdAt | date }}</p>
+
+  <h2>Détails de la commande :</h2>
+  <ul>
+    <li *ngFor="let product of order.products">
+      {{ product.name }} - {{ product.quantity }} x {{ product.price | currency }}
+    </li>
+  </ul>
+
+</div>

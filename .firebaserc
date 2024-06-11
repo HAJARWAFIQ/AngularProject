@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "monprojet-e03cc"
+  },
+  "targets": {
+    "monprojet-e03cc": {
+      "hosting": {
+        "projecttest": [
+          "monprojet-e03cc"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

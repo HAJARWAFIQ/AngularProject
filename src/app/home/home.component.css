@@ -1,0 +1,21 @@
+.background-container {
+    background-image: url('../../assets/bghome.jpg');
+    background-size: cover;
+    padding-top: 80px;
+    height: 100vh; /* Ajustez la hauteur pour couvrir toute la page */
+     width: 100%;
+     position: relative;
+  }
+
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 20px;
+  }
+  .text-container {
+    text-align: center; /* Centrage du texte */
+    padding: 20px;
+  }

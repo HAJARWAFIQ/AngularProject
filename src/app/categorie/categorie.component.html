@@ -1,0 +1,71 @@
+<div class="background-container" style="padding-top: 80px;">
+  <ul class="product-service-list products list-unstyled">
+    <li *ngFor="let product of filteredProducts" class="product-service-item border-bottom" style="background-color: white;">
+      <div class="product row"> <!-- Ajout de ngClass -->
+        <div [ngClass]="{ 'low-stock': isLowStock(product.quantity) }" class="name custom-product-quantity"></div>
+
+        <div class="col-md-2 product-details">
+          <div class="discount-badge" *ngIf="isPromotionActive(product.promotion)">
+            -{{ getDiscountPercentage(product) }}%
+          </div>
+          <img [src]="product.imageUrl" alt="{{product.name}}" class="img-fluid" />
+        </div>
+
+        <div class="col-md-6 product-info">
+          <div class="name text-primary custom-product-name">
+            <h5>{{ product.name }}</h5>
+          </div>
+
+          <div *ngIf="!product.showDetails" class="description text-muted custom-product-description">
+            {{ product.description | slice:0:100 }} <!-- Afficher les 100 premiers caractères de la description -->
+            <button class="btn btn-link text-muted btn-light" (click)="toggleDetails(product)"><b>Show more</b></button>
+          </div>
+
+          <div *ngIf="product.showDetails">
+            {{ product.description }}
+            <button class="btn btn-link text-muted btn-light" (click)="toggleDetails(product)"><b>Hide details</b></button>
+          </div>
+
+          <div class="name custom-product-quantity">Quantity: {{ product.quantity }}</div>
+          <span *ngIf="isLowStock(product.quantity)" class="low-stock-message">Only a few left in stock!</span>
+        </div>
+        <div class="col-md-3 product-actions">
+          <div class="price-info">
+            <div class="price">
+              <span *ngIf="isPromotionActive(product.promotion)" class="original-price">
+                {{ product.price }}$
+              </span>
+              <span *ngIf="isPromotionActive(product.promotion)" class="discounted-price">
+                {{ getDiscountedPrice(product) }}$
+              </span>
+              <span *ngIf="!product.promotion || !isPromotionActive(product.promotion)">
+                {{ product.price }}$
+              </span>
+            </div>
+          </div>
+        <div class="col-md-3"> 
+          <ng-container *ngIf="isAdmin | async; else buyButton"> 
+            <button class="btn btn-success " (click)="editProduct(product.id)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <span style="width: 10px; display: inline-block;"></span>
+            <button class="btn btn-danger" (click)="deleteProduct(product.id)">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-success" (click)="addPromotion(product.id)">
+              <i class="bi bi-plus-circle"></i>
+            </button>
+            <button *ngIf="product.promotion" class="btn btn-warning" (click)="removePromotion(product.id)">
+              <i class="bi bi-x-circle-fill remove-promo-icon"></i>
+            </button>
+            <button class="btn btn-primary" [routerLink]="['/admin-orders']"><i class="bi bi-eye"></i></button>
+          </ng-container>
+          <ng-template #buyButton>
+            <button class="btn btn-primary cta" (click)="addToCart(product)">Buy</button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    </li>
+  </ul>
+</div>

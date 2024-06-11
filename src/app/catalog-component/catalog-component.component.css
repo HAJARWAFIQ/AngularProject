@@ -1,0 +1,185 @@
+.background-container {
+  background-image: url('../../assets/bg2.jpg');
+  background-size: cover;
+  padding-top: 80px;
+}
+
+.product-service-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.product-service-item {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 0px;
+}
+
+.product-details img {
+  max-width: 50%;
+  height: auto;
+}
+
+.product-info {
+  flex: 3;
+  padding-left: 20px;
+}
+
+.product-info .custom-product-name {
+  margin-bottom: 10px;
+}
+
+.product-info .description {
+  margin-bottom: 10px;
+}
+
+.product-info .custom-product-quantity {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.low-stock-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-actions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.price-info {
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 20px; /* Déplacer les prix vers la gauche */
+}
+
+.price-info .discount-percentage {
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+.price {
+  font-size: 1.2em;
+}
+/*
+.price-info .original-price {
+  text-decoration: line-through;
+  color: red;
+  font-weight: bold;
+  margin-right: 10px;
+}
+*/
+.price-info .original-price {
+  position: relative;
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.price-info .original-price::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  transform: rotate(-20deg); /* Ajustez l'angle selon vos besoins */
+  transform-origin: center;
+}
+
+.price-info .discounted-price {
+  color: green;
+  font-weight: bold;
+}
+
+.btn {
+  margin-bottom: 3px;
+}
+
+.btn i {
+  margin-right: 2px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border: none;
+}
+
+.cta {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 100px; /* Monter le bouton "Buy" */
+  margin-right: 10px;
+  margin-left: -10px;
+}
+
+.discount-badge {
+  position: relative;
+  top: -25px;
+  left: 10px;
+  background-color: #e74c3c;
+  color: white;
+  padding: 1px 2px;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 2px;
+  line-height: 3;
+  width: auto; /* Assure que la largeur s'ajuste au contenu */
+  display: inline-block; 
+ 
+}
+.bi {
+  font-size: 1rem; /* Définir la taille de la police pour les icônes */
+}
+
+.remove-promo-icon {
+  font-size: 0.8rem; /* Définir une taille de police plus petite pour l'icône de suppression de la promotion */
+}

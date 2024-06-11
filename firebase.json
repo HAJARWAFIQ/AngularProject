@@ -1,0 +1,15 @@
+{
+  "firestore": {
+    "rules": "custom-firestore-rules.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": [
+    {
+      "target": "projecttest",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ]
+}

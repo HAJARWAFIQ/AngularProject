@@ -1,0 +1,126 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/bg2.jpeg'); /* Remplacez par le chemin de votre image */
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  background-color: white; /* Fond blanc pour le contenu */
+  padding: 20px;
+  max-width: 1200px; /* Limiter la largeur du contenu */
+  margin: 20px; /* Espacement pour ne pas coller aux bords */
+  border-radius: 10px; /* Bordures arrondies */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner un effet de profondeur */
+}
+
+.background-container {
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.total-amount {
+  text-align: right;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: linear-gradient(135deg, #ff6f61 0%, #ff9671 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+.total-amount h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.product-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-info {
+  text-align: left;
+}
+
+.product-info .name {
+  font-size: 18px;
+  margin: 0;
+}
+
+.product-info .description {
+  font-size: 14px;
+  color: #555;
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.description {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls .btn {
+  font-size: 14px;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.product-price {
+  text-align: right;
+  font-size: 18px;
+  color: #333;
+}
+
+.btn {
+  font-size: 14px;
+}

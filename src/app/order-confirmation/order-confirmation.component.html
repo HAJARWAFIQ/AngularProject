@@ -1,0 +1,20 @@
+<br><br><div *ngIf="order" class="order-confirmation">
+    <h1>Confirmation de commande</h1>
+    <p>Merci pour votre commande ! Voici les détails :</p>
+  
+    <p><strong>Numéro de commande :</strong> {{ order.id }}</p>
+    <p><strong>Montant total :</strong> {{ order.totalAmount | currency }}</p>
+    <p><strong>Date de commande :</strong> {{ order.createdAt | date }}</p>
+  
+    <h2>Détails de la commande :</h2>
+    <ul>
+      <li *ngFor="let product of order.products">
+        {{ product.name }} - {{ product.quantity }} x {{ product.price | currency }}
+      </li>
+    </ul>
+  
+    <button class="btn btn-primary" (click)="confirmOrder()">Confirmer la commande</button>
+    <button class="btn btn-primary" (click)="downloadInvoice()">Télécharger la facture</button>
+    <button class="btn btn-primary" (click)="viewOrderStatus()">Voir le statut de la commande</button>
+  </div>
+  
